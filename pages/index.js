@@ -24,7 +24,10 @@ export default function Home(initialData) {
 }
 export async function getServerSideProps(context) {
   //Sayfada kullanılan veriler istek yapıldığı anda alınmak isteniyorsa getServerSideProps fonksiyonu içinde bu veriler alınıp sayfa render işlemi sunucuda yapılabilir. Buna server side rendering denir.
+  let movies = await fetch(`
+  https://api.themoviedb.org/3/trending/movie/day?api_key=${serverRuntimeConfig.apiKey}`);
+  movies = await movies.json();
   return {
-    props: {},
+    props: { movies: movies },
   };
 }
