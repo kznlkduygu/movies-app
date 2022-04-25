@@ -1,10 +1,18 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 import getConfig from "next/config";
+import Movies from "../pages/src/components/Movies";
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 export default function Home(initialData) {
+  // başlangıçta boş bir dizi oluşturuldu ardından useEffect ile initialData yüklendiği anda verilerin yüklenmesi sağlandı
+  const [search, setSearch] = useState([]);
+  useEffect(() => {
+    setSearch(initialData.movies.results);
+  }, [initialData]);
+
   return (
     <div className="container">
       <Head>
@@ -14,11 +22,23 @@ export default function Home(initialData) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div>Main</div>
-      </main>
+      {/* <main className={styles.main}> */}
+      <div className="movie-search-results">
+        {search.map((movieDetail, index) => {
+          return (
+            <Movies
+              index={movieDetail.id}
+              title={movieDetail.title}
+              poster_path={movieDetail.poster_path}
+              overview={movieDetail.overview}
+            />
+          );
+        })}
+      </div>
+      {/* <div>Main</div>
+      </main> */}
 
-      <footer className={styles.footer}>Footer</footer>
+      {/* <footer className={styles.footer}>Footer</footer> */}
     </div>
   );
 }
