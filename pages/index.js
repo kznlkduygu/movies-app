@@ -24,16 +24,7 @@ export default function Home(initialData) {
 
       {/* <main className={styles.main}> */}
       <div className="movie-search-results">
-        {search.map((movieDetail, index) => {
-          return (
-            <Movies
-              index={movieDetail.id}
-              title={movieDetail.title}
-              poster_path={movieDetail.poster_path}
-              overview={movieDetail.overview}
-            />
-          );
-        })}
+        <Movies />
       </div>
       {/* <div>Main</div>
       </main> */}
