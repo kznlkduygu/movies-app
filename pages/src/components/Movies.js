@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ResultCard } from "./ResultCard";
 import getConfig from "next/config";
+import styles from "../../../styles/Home.module.css";
 
 export default function Movies() {
   const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
@@ -18,29 +19,26 @@ export default function Movies() {
   };
 
   return (
-    <div className="movies-page">
-      <div className="container">
-        <div className="add-content">
-          <div className="input-wrapper">
-            <input
-              type="text"
-              placeholder="Arama"
-              name="search"
-              value={query}
-              onChange={onChange}
-            />
-          </div>
-          {result?.length > 0 && (
-            <div className="results">
-              {result?.map((movie) => (
-                <ul>
-                  <ResultCard movie={movie} />
-                </ul>
-              ))}
-            </div>
-          )}
-        </div>
+    <div>
+      <div>
+        <input
+          className={styles.search}
+          type="text"
+          placeholder="Arama"
+          name="search"
+          value={query}
+          onChange={onChange}
+        />
       </div>
+      {result?.length > 0 && (
+        <div className={styles.results}>
+          {result?.map((movie) => (
+            <ul>
+              <ResultCard movie={movie} />
+            </ul>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
