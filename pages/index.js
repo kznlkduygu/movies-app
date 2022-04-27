@@ -11,7 +11,7 @@ export default function Home(initialData) {
   const [searchResults, setSearchResults] = useState([]);
   const [input, setInput] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [lastFiveSearches, setLastFiveSearches] = useState([]) 
   useEffect(() => {
     setSearchResults(initialData.movies.results);
   }, [initialData]);
@@ -23,15 +23,14 @@ export default function Home(initialData) {
   };
 
   const onChangeSearch = async (e) => {
+    setLastFiveSearches([...lastFiveSearches,input.searchTerm]) // son beş arama için lastFiveSearches set edilip sonradan aranan(input.search) değerler ile birleştirip bir array oluşturuldu
     e.preventDefault(); //tıklandığında bu eylemin engellenmesi gerekiyor ise kullanılır
     let movies = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${publicRuntimeConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${input.searchTerm}`
     ); // TMDB'den alınan movie API'si tanımlandı
     movies = await movies.json(); // içerik çıkarmak için json kullanıldı
     setSearchResults(movies.results); // apiden çıkan veriler başta boş olan setSearchResults'a set edildi.
-    console.log(movies)
   };
-  console.log('searchResults',searchResults)
 
   return (
     <div className="container">
