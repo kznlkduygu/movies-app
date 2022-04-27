@@ -16,7 +16,7 @@ export default function Movies({
     <>
       <Link
         href={{
-          pathname: "/home/MovieDetails",
+          pathname: "/movie-details",
           query: { id: index },
         }}
       >

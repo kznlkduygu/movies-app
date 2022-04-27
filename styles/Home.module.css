@@ -178,3 +178,11 @@
 .h3 {
   width: 100%;
 }
+.description {
+  margin: auto;
+  width: 50%;
+}
+.detailTitle {
+  margin: auto;
+  width: 20%;
+}
