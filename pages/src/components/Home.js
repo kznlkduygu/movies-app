@@ -1,8 +1,8 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import getConfig from "next/config";
-import Movies from "./src/components/Movies";
+import Movies from "./Movies";
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
