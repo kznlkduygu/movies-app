@@ -192,3 +192,15 @@
   width: 97%;
   padding: 12px 16px;
 }
+.moviesDetailSimilar {
+  position: relative;
+}
+.moviesDetail {
+  width: 350px;
+  margin: 50px;
+  position: relative;
+  overflow: hidden;
+  padding: 2px 0;
+  border: 1px solid gray;
+  border-radius: 5px;
+}

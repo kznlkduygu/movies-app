@@ -24,7 +24,7 @@ function MovieDetails({ moviesDetails }) {
   const IMAGES_API = "https://image.tmdb.org/t/p/w300/";
 
   return (
-    <div key={moviesDetails.index}>
+    <div key={moviesDetails.id}>
       <div className={styles.detailTitle}>
         <h2>
           {moviesDetails.title} - {moviesDetails.vote_average}
@@ -39,18 +39,9 @@ function MovieDetails({ moviesDetails }) {
         </div>
         <div>
           <h6> {moviesDetails.overview}</h6>
-
-          <h4>
-            {moviesDetails.release_date
-              ? moviesDetails.release_date.substring(0, 4)
-              : "-"}{" "}
-          </h4>
         </div>
       </div>
-      {moviesDetails.genres.map((data) => {
-        return (<Genres data={data.id} />)
-      })}
-      <div></div>
+      <Genres data={moviesDetails.id} />
     </div>
   );
 }
