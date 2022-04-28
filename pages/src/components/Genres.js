@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Genres({ data }) {
-  console.log("içerde", data);
-  return <div>Genres</div>;
+export default function Movies({ data }) {
+  const IMAGES_API = "https://image.tmdb.org/t/p/w500/";
+
+  return (
+    <>
+      {/* <div>selam</div> */}
+    </>
+  );
 }
-
-export default Genres;

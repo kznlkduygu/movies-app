@@ -48,7 +48,7 @@ function MovieDetails({ moviesDetails }) {
         </div>
       </div>
       {moviesDetails.genres.map((data) => {
-        <Genres data={data} />;
+        return (<Genres data={data.id} />)
       })}
       <div></div>
     </div>
