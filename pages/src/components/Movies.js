@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../../styles/Home.module.css";
 import Link from "next/link";
+import { IMAGES_API } from "../../config/config";
 
 export default function Movies({
   title,
@@ -10,8 +11,6 @@ export default function Movies({
   release_date,
   vote_average,
 }) {
-  const IMAGES_API = "https://image.tmdb.org/t/p/w500/";
-
   return (
     <>
       <Link
@@ -27,7 +26,7 @@ export default function Movies({
             </h3>
           </div>
 
-          <img src={IMAGES_API + poster_path} alt={title}></img>
+          <img src={IMAGES_API.w500 + poster_path} alt={title}></img>
           <div className={styles.overview}>
             {overview}
             <h4>{release_date ? release_date.substring(0, 4) : "-"} </h4>

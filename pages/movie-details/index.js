@@ -3,6 +3,7 @@ import styles from "../../styles/Home.module.css";
 import { useRouter } from "next/router";
 import getConfig from "next/config";
 import Genres from "../src/components/Genres";
+import { IMAGES_API } from "../config/config";
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -14,14 +15,12 @@ export async function getServerSideProps({ query }) {
     `https://api.themoviedb.org/3/movie/${id}?api_key=${publicRuntimeConfig.apiKey}&language=en-US`
   );
   moviesDetails = await moviesDetails.json();
-  console.log("moviesDetail", moviesDetails.pageProps);
   return {
     props: { moviesDetails: moviesDetails },
   };
 }
 
 function MovieDetails({ moviesDetails }) {
-  const IMAGES_API = "https://image.tmdb.org/t/p/w300/";
 
   return (
     <div key={moviesDetails.id}>
@@ -33,7 +32,7 @@ function MovieDetails({ moviesDetails }) {
       <div className={styles.description}>
         <div>
           <img
-            src={IMAGES_API + moviesDetails.poster_path}
+            src={IMAGES_API.w300 + moviesDetails.poster_path}
             alt={moviesDetails.title}
           ></img>
         </div>
